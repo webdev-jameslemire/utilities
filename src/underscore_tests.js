@@ -44,7 +44,13 @@ var _ = { };
 
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
-  _.indexOf = function(array, target){
+  _.indexOf = function(array, target) {
+
+    for(var i = 0; i < array.length; i++) {
+      if(array[i] === target) return i;
+    }
+
+    return -1;
   };
 
   // Return all elements of an array that pass a truth test ('iterator' function argument)
