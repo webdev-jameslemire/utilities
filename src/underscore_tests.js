@@ -79,17 +79,45 @@ var _ = { };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+
+    var rElements = [];
+
+    for(var i in array) {
+      if(rElements.indexOf(array[i]) === -1)  {
+        rElements.push(array[i]);
+      }
+    }
+
+    return rElements;
   };
 
 
   // Return the results of applying an iterator to each element.
   _.map = function(array, iterator) {
+
+    for(var i in array) {
+      array[i] = iterator(array[i]);
+    }
+
+    return array;
   };
 
   // Takes an array of objects and returns and array of the values of
   // a certain property in it. E.g. take an array of people and return
   // an array of just their ages
   _.pluck = function(array, propertyName) {
+
+    var rElements = [];
+
+    for(var i = 0; i < array.length; i++) {
+      for(var j in array[i]) {
+      	if(j === propertyName) {
+      		rElements.push(array[i][j]);
+      	}
+      }
+    }
+
+    return rElements;
   };
 
   // Calls the method named by methodName on each value in the list.
